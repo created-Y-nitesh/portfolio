@@ -1,0 +1,530 @@
+/* =========================
+   about.css — Ultra-polished About page
+   Paste into: assets/css/about.css
+   ========================= */
+
+
+/* ---------- FONT ----------
+   (If you already load a font in <head>, remove the import here)
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+/* ---------- VARIABLES ---------- */
+
+:root {
+    --bg-900: #060612;
+    --glass: rgba(255, 255, 255, 0.04);
+    --glass-2: rgba(255, 255, 255, 0.02);
+    --muted: #b9c1df;
+    --text: #eef3ff;
+    --accent-a: #7ce7f0;
+    --accent-b: #7b63ff;
+    --accent-c: #ff7ab6;
+    --card-radius: 16px;
+    --max-w: 1150px;
+    --shadow-1: 0 10px 30px rgba(2, 6, 23, 0.6);
+    --fast: 260ms;
+}
+
+
+/* ---------- RESET & BASE ---------- */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+}
+
+html {
+    scroll-behavior: smooth
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(180deg, #05050a 0%, #0a0b14 100%);
+    color: var(--text);
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.5;
+    position: relative;
+    overflow-x: hidden;
+}
+
+
+/* ---------- AURORA LAYERS (subtle moving color) ---------- */
+
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    inset: -40%;
+    z-index: -5;
+    background: radial-gradient(800px 500px at 10% 20%, rgba(124, 99, 255, 0.09), transparent 20%), radial-gradient(700px 420px at 90% 30%, rgba(255, 122, 182, 0.06), transparent 18%), radial-gradient(900px 500px at 50% 80%, rgba(124, 227, 250, 0.05), transparent 18%);
+    filter: blur(90px) saturate(105%);
+    transform: rotate(0deg);
+    animation: aurora 22s linear infinite;
+}
+
+body::after {
+    animation-duration: 32s;
+    animation-direction: reverse
+}
+
+@keyframes aurora {
+    0% {
+        transform: translate(0, 0) rotate(0)
+    }
+    50% {
+        transform: translate(6%, -6%) rotate(180deg)
+    }
+    100% {
+        transform: translate(0, 0) rotate(360deg)
+    }
+}
+
+
+/* ---------- LAYOUT HELPERS ---------- */
+
+.container {
+    width: 92%;
+    max-width: var(--max-w);
+    margin: 0 auto
+}
+
+.header {
+    position: sticky;
+    top: 18px;
+    padding: 12px 0;
+    z-index: 40
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+    padding: 10px 18px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(8px) saturate(120%);
+    box-shadow: 0 10px 30px rgba(2, 6, 23, 0.5)
+}
+
+.logo {
+    font-weight: 700;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 1.05rem;
+    letter-spacing: 0.2px
+}
+
+
+/* nav links */
+
+.nav-links {
+    display: flex;
+    gap: 18px;
+    list-style: none;
+    align-items: center
+}
+
+.nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: all var(--fast) ease
+}
+
+.nav-links a:hover {
+    color: var(--text);
+    background: rgba(255, 255, 255, 0.02);
+    transform: translateY(-4px)
+}
+
+.nav-links a.active {
+    color: var(--text);
+    background: linear-gradient(90deg, var(--accent-a), var(--accent-b));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 0
+}
+
+
+/* ---------- MAIN / HERO ---------- */
+
+.about-page {
+    padding: 88px 0 64px
+}
+
+.about-hero {
+    padding-left: 12px;
+    text-align: center
+}
+
+.about-hero h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    line-height: 1.02;
+    margin-bottom: 10px;
+    font-weight: 700;
+    background: linear-gradient(90deg, var(--accent-a), var(--accent-b), var(--accent-c));
+    background-size: 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textShift 7s linear infinite
+}
+
+@keyframes textShift {
+    0% {
+        background-position: 0%
+    }
+    50% {
+        background-position: 100%
+    }
+    100% {
+        background-position: 0%
+    }
+}
+
+.about-hero .subtitle {
+    color: var(--muted);
+    max-width: 760px;
+    margin: 0 auto;
+    font-size: 1.05rem
+}
+
+
+/* ---------- TWO-COLUMN CONTENT ---------- */
+
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 36px;
+    margin-left: 100px;
+    margin-top: 50px;
+    align-items: start;
+    padding: 34px 0
+}
+
+@media (max-width:1000px) {
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 22px
+    }
+}
+
+.about-text h2 {
+    font-size: 1.25rem;
+    margin-bottom: 8px
+}
+
+.about-text p {
+    color: var(--muted);
+    margin-bottom: 12px;
+    font-size: 1rem
+}
+
+
+/* ---------- SKILLS ---------- */
+
+.about-skills {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+    padding: 20px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(8px)
+}
+
+.about-skills h2 {
+    margin-bottom: 14px
+}
+
+.skills-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-left: 0
+}
+
+.skills-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0.005));
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    color: var(--text);
+    font-weight: 600;
+}
+
+
+/* skill pill visual accent */
+
+.skills-list li::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 12px;
+    background: linear-gradient(90deg, var(--accent-a), var(--accent-b));
+    box-shadow: 0 6px 18px rgba(124, 92, 255, 0.12);
+    display: inline-block;
+    flex: 0 0 auto;
+}
+
+
+/* ---------- EXTRA / GOAL ---------- */
+
+.about-extra {
+    margin-top: 26px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+    padding: 22px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.03)
+}
+
+.about-extra h2 {
+    margin-bottom: 10px
+}
+
+.about-extra p {
+    color: var(--muted)
+}
+
+
+/* ---------- CERTIFICATES GRID ---------- */
+
+.about-certificates {
+    margin-top: 34px;
+    padding-top: 6px
+}
+
+.cert-desc {
+    color: var(--muted);
+    margin-bottom: 18px
+}
+
+.cert-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px
+}
+
+@media (max-width:980px) {
+    .cert-grid {
+        grid-template-columns: repeat(2, 1fr)
+    }
+}
+
+@media (max-width:540px) {
+    .cert-grid {
+        grid-template-columns: 1fr
+    }
+}
+
+
+/* certificate card */
+
+.cert-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 14px;
+    padding: 14px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    transition: transform 420ms cubic-bezier(.2, .9, .2, 1), box-shadow 420ms;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    text-align: center;
+    box-shadow: 0 8px 30px rgba(2, 6, 23, 0.45);
+}
+
+.cert-card img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.03)
+}
+
+.cert-card h3 {
+    font-size: 1rem;
+    margin-top: 6px
+}
+
+.cert-card span {
+    font-size: 0.9rem;
+    color: var(--muted)
+}
+
+
+/* floating light strip (decorative) */
+
+.cert-card::before {
+    content: "";
+    position: absolute;
+    left: -30%;
+    top: 0;
+    width: 160%;
+    height: 100%;
+    transform: skewY(-6deg);
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+    pointer-events: none;
+    mix-blend-mode: overlay;
+    opacity: 0;
+    transition: opacity 420ms;
+}
+
+.cert-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 28px 80px rgba(2, 6, 23, 0.6)
+}
+
+.cert-card:hover::before {
+    opacity: 1
+}
+
+
+/* gentle 3D tilt illusion using pseudo perspective */
+
+.cert-card:hover img {
+    transform: translateY(-6px) scale(1.02);
+    transition: transform 420ms
+}
+
+
+/* ---------- FOOTER ---------- */
+
+.footer {
+    padding: 28px 0 48px;
+    text-align: center;
+    color: var(--muted);
+    border-top: 1px solid rgba(255, 255, 255, 0.02);
+    margin-top: 36px
+}
+
+
+/* ---------- REVEAL / ANIMATIONS UTILITIES ---------- */
+
+.reveal-up {
+    opacity: 0;
+    transform: translateY(22px);
+    animation: revealUp 760ms cubic-bezier(.2, .9, .2, 1) forwards
+}
+
+.delay-1 {
+    animation-delay: 120ms
+}
+
+.delay-2 {
+    animation-delay: 260ms
+}
+
+.delay-3 {
+    animation-delay: 420ms
+}
+
+@keyframes revealUp {
+    to {
+        opacity: 1;
+        transform: none
+    }
+}
+
+
+/* subtle shimmer for interactive elements */
+
+.shimmer {
+    position: relative;
+    overflow: hidden;
+}
+
+.shimmer::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0));
+    transform: translateX(-120%);
+    transition: transform 900ms ease;
+    pointer-events: none;
+}
+
+.shimmer:hover::after {
+    transform: translateX(120%)
+}
+
+
+/* ---------- LINKS / ACCESSIBILITY ---------- */
+
+a {
+    color: inherit
+}
+
+a:focus {
+    outline: 3px solid rgba(124, 92, 255, 0.18);
+    outline-offset: 4px;
+    border-radius: 6px
+}
+
+
+/* ---------- RESPONSIVE ADJUSTMENTS ---------- */
+
+@media (max-width:1000px) {
+    .nav-links {
+        display: flex;
+        gap: 12px
+    }
+    .about-page {
+        padding: 60px 0 40px
+    }
+    .about-hero {
+        padding-top: 6px
+    }
+}
+
+@media (max-width:600px) {
+    .navbar {
+        padding: 8px
+    }
+    .logo {
+        font-size: 0.95rem
+    }
+    .nav-links {
+        gap: 8px;
+        font-size: 0.95rem
+    }
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 20px
+    }
+    .cert-card img {
+        height: 140px
+    }
+}
+
+
+/* ---------- PREFERS REDUCED MOTION ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.001ms !important;
+        transition: none !important
+    }
+    .reveal-up {
+        opacity: 1;
+        transform: none
+    }
+}
+
+
+/* ---------- END of about.css ---------- */

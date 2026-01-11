@@ -1,0 +1,658 @@
+/* =========================
+   THEME.CSS — Professional, Animated, Responsive
+   Drop into: assets/css/theme.css
+   Matches your HTML structure and classes.
+   ========================= */
+
+
+/* ---------- VARIABLES ---------- */
+
+:root {
+    --bg-900: #050611;
+    --glass: rgba(255, 255, 255, 0.06);
+    --glass-2: rgba(255, 255, 255, 0.04);
+    --muted: #b7bfd6;
+    --text: #eaf0ff;
+    --accent-1: #6ee7f0;
+    --accent-2: #7c5cff;
+    --accent-3: #ff7ab6;
+    --card-radius: 18px;
+    --container-w: 1200px;
+    --shadow-strong: 0 30px 60px rgba(2, 6, 23, 0.65);
+    --glass-border: rgba(255, 255, 255, 0.12);
+    --fast: 220ms;
+}
+
+
+/* ---------- RESET / BASE ---------- */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0
+}
+
+html {
+    scroll-behavior: smooth
+}
+
+body {
+    min-height: 100vh;
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: var(--bg-900);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.45;
+    position: relative;
+    overflow-x: hidden;
+}
+
+
+/* ---------- SUBTLE NOISE (optional look) ---------- */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: -30%;
+    z-index: -3;
+    background: radial-gradient(1000px 600px at 10% 20%, rgba(124, 92, 255, 0.10), transparent 12%), radial-gradient(900px 500px at 90% 30%, rgba(255, 122, 182, 0.08), transparent 14%), radial-gradient(1000px 500px at 50% 80%, rgba(110, 231, 240, 0.06), transparent 12%);
+    filter: blur(80px) saturate(110%);
+    transform: rotate(0deg);
+    animation: aurora 20s linear infinite;
+    mix-blend-mode: screen;
+}
+
+@keyframes aurora {
+    0% {
+        transform: translate(0, 0) rotate(0)
+    }
+    50% {
+        transform: translate(6%, -6%) rotate(180deg)
+    }
+    100% {
+        transform: translate(0, 0) rotate(360deg)
+    }
+}
+
+
+/* ---------- CONTAINER ---------- */
+
+.container {
+    width: 92%;
+    max-width: var(--container-w);
+    margin: 0 auto;
+}
+
+
+/* ---------- NAVBAR ---------- */
+
+.navbar {
+    position: fixed;
+    top: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 92%;
+    max-width: var(--container-w);
+    z-index: 999;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.02));
+    border-radius: 28px;
+    padding: 10px 14px;
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(12px) saturate(120%);
+    box-shadow: 0 6px 30px rgba(2, 6, 23, 0.5);
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 6px 8px
+}
+
+.nav-logo .logo {
+    height: 40px;
+    display: block;
+    border-radius: 5px;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 10px;
+    align-items: center
+}
+
+.nav-item .nav-link button {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid transparent;
+    padding: 10px 16px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all var(--fast) ease;
+}
+
+.nav-item .nav-link button:hover,
+.nav-item .nav-link button:focus {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(124, 92, 255, 0.14);
+    border: 1px solid rgba(124, 92, 255, 0.18);
+}
+
+
+/* HAMBURGER (mobile) */
+
+.hamburger {
+    width: 42px;
+    height: 36px;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.hamburger .bar {
+    height: 3px;
+    border-radius: 6px;
+    background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+    transition: transform 260ms ease, opacity 180ms ease;
+}
+
+
+/* when JS toggles .hamburger.open */
+
+.hamburger.open .bar:nth-child(1) {
+    transform: translateY(6px) rotate(45deg)
+}
+
+.hamburger.open .bar:nth-child(2) {
+    opacity: 0
+}
+
+.hamburger.open .bar:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg)
+}
+
+
+/* responsive nav menu toggle (JS should add .open to .nav-menu) */
+
+.nav-menu {
+    gap: 12px
+}
+
+.nav-menu.open {
+    /* for mobile; when open via JS */
+    position: fixed;
+    right: 20px;
+    top: 82px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(14px);
+    padding: 12px;
+    border-radius: 14px;
+    flex-direction: column;
+    box-shadow: 0 20px 60px rgba(2, 6, 23, 0.6);
+}
+
+
+/* ---------- HERO ---------- */
+
+.hero {
+    min-height: 88vh;
+    display: grid;
+    align-items: center;
+    padding: 110px 0 48px
+}
+
+.hero-container {
+    display: grid;
+    grid-template-columns: 1fr 520px;
+    gap: 48px;
+    align-items: center;
+    width: 92%;
+    max-width: var(--container-w);
+    margin: 0 auto
+}
+
+@media (max-width:980px) {
+    .hero-container {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        padding: 0 12px
+    }
+}
+
+.hero-title {
+    font-size: clamp(2.1rem, 5.2vw, 3.4rem);
+    line-height: 1.03;
+    font-weight: 700;
+    letter-spacing: -0.6px;
+    margin-bottom: 14px;
+    background: linear-gradient(90deg, var(--accent-1), var(--accent-2), var(--accent-3));
+    background-size: 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 8s linear infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 0%
+    }
+    50% {
+        background-position: 100%
+    }
+    100% {
+        background-position: 0%
+    }
+}
+
+.hero-subtitle {
+    color: var(--muted);
+    font-size: 1.05rem;
+    margin-bottom: 22px
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 14px
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    border-radius: 999px;
+    font-weight: 700;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 260ms cubic-bezier(.2, .9, .2, 1), box-shadow 260ms;
+}
+
+.btn-primary {
+    background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+    color: #031026;
+    box-shadow: 0 12px 40px rgba(124, 92, 255, 0.16);
+}
+
+.btn-primary:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 28px 70px rgba(124, 92, 255, 0.22)
+}
+
+.btn-secondary {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    color: var(--text)
+}
+
+.btn-secondary:hover {
+    transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.02)
+}
+
+.hero-image {
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.hero-img {
+    width: 100%;
+    max-width: 520px;
+    border-radius: 22px;
+    display: block;
+    object-fit: cover;
+    box-shadow: var(--shadow-strong), 0 0 60px rgba(124, 92, 255, 0.08);
+    transform-style: preserve-3d;
+    animation: float 6.6s ease-in-out infinite;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0)
+    }
+    50% {
+        transform: translateY(-16px)
+    }
+    100% {
+        transform: translateY(0)
+    }
+}
+
+
+/* subtle halo behind hero image */
+
+.hero-image::before {
+    content: "";
+    position: absolute;
+    width: 540px;
+    height: 320px;
+    border-radius: 28px;
+    z-index: -1;
+    background: radial-gradient(closest-side, rgba(124, 92, 255, 0.12), transparent 45%);
+    filter: blur(40px);
+    transform: translateY(18px);
+}
+
+
+/* ---------- FEATURES ---------- */
+
+.features {
+    padding: 84px 0 64px
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 34px
+}
+
+.section-header h2 {
+    font-size: 1.8rem;
+    margin-bottom: 6px
+}
+
+.section-header p {
+    color: var(--muted)
+}
+
+.features-grid {
+    display: grid;
+    gap: 22px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    align-items: stretch;
+}
+
+.feature-card {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.02));
+    border-radius: var(--card-radius);
+    padding: 26px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    transition: transform 360ms cubic-bezier(.2, .9, .2, 1), box-shadow 360ms;
+    position: relative;
+    overflow: hidden;
+}
+
+.feature-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 28px 70px rgba(2, 6, 23, 0.6)
+}
+
+.feature-card .feature-icon img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    margin-bottom: 12px
+}
+
+
+/* glow accent on hover */
+
+.feature-card::after {
+    content: "";
+    position: absolute;
+    inset: -30%;
+    background: linear-gradient(90deg, rgba(110, 231, 240, 0.08), rgba(124, 92, 255, 0.06), rgba(255, 122, 182, 0.05));
+    opacity: 0;
+    transition: opacity 420ms;
+}
+
+.feature-card:hover::after {
+    opacity: 1
+}
+
+
+/* ---------- PROJECTS ---------- */
+
+.projects {
+    padding: 84px 0 60px
+}
+
+.projects-grid {
+    display: grid;
+    gap: 22px;
+    width: 100%;
+}
+
+.project-card {
+    border-radius: 20px;
+    overflow: hidden;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    transition: transform 360ms, box-shadow 360ms;
+}
+
+.project-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 32px 90px rgba(2, 6, 23, 0.65)
+}
+
+.project-img {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+    display: block
+}
+
+.project-info {
+    padding: 18px 20px
+}
+
+.project-info h3 {
+    font-size: 1.05rem;
+    margin-bottom: 8px
+}
+
+.project-info p {
+    color: var(--muted);
+    font-size: 0.95rem;
+    margin-bottom: 12px
+}
+
+.project-tech span {
+    display: inline-block;
+    margin-right: 8px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.03);
+    font-size: 12px;
+    color: var(--muted)
+}
+
+
+/* small overlay effect on project image */
+
+.project-card .project-img-wrapper {
+    position: relative
+}
+
+.project-card .overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.28));
+    opacity: 0;
+    transition: opacity 320ms;
+}
+
+.project-card:hover .overlay {
+    opacity: 1
+}
+
+
+/* ---------- CTA ---------- */
+
+.cta {
+    padding: 120px 0;
+    text-align: center
+}
+
+.cta h2 {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+    background: linear-gradient(90deg, var(--accent-2), var(--accent-3));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.cta p {
+    color: var(--muted);
+    margin-bottom: 22px
+}
+
+
+/* ---------- FOOTER ---------- */
+
+.footer {
+    padding: 70px 0 40px;
+    background: linear-gradient(180deg, rgba(2, 6, 23, 0.85), rgba(2, 6, 23, 0.95));
+    margin-top: 48px
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    align-items: start
+}
+
+.footer-brand .footer-logo {
+    height: 420px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+}
+
+.footer-links ul {
+    list-style: none
+}
+
+.footer-links a {
+    color: var(--muted);
+    text-decoration: none;
+}
+
+.footer-bottom {
+    margin-top: 20px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.95rem
+}
+
+.social-links a {
+    margin: 0 8px;
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    transition: transform 260ms ease
+}
+
+.social-links img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    object-fit: contain
+}
+
+
+/* ---------- ANIMATION UTILITIES (use classes in your HTML) ---------- */
+
+.animate-slide-up {
+    opacity: 0;
+    transform: translateY(18px);
+    animation: slideUp 760ms cubic-bezier(.2, .9, .2, 1) forwards
+}
+
+.animate-fade-in {
+    opacity: 0;
+    transform: translateY(6px);
+    animation: fadeIn 900ms ease forwards
+}
+
+.delay-1 {
+    animation-delay: 160ms
+}
+
+.delay-2 {
+    animation-delay: 320ms
+}
+
+.delay-3 {
+    animation-delay: 480ms
+}
+
+@keyframes slideUp {
+    to {
+        opacity: 1;
+        transform: none
+    }
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: none
+    }
+}
+
+
+/* ---------- ACCESSIBILITY / REDUCED MOTION ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition: none !important
+    }
+}
+
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width:980px) {
+    .nav-menu {
+        display: none
+    }
+    /* show via .nav-menu.open when hamburger toggles */
+    .hamburger {
+        display: flex
+    }
+    .nav-container {
+        padding: 10px
+    }
+    .hero {
+        padding-top: 90px
+    }
+}
+
+
+/* small screens */
+
+@media (max-width:520px) {
+    .hero-title {
+        font-size: 1.8rem
+    }
+    .hero-subtitle {
+        font-size: 0.98rem
+    }
+    .hero-img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 14px
+    }
+    .nav-menu.open {
+        right: 12px;
+        left: auto;
+        top: 74px
+    }
+}
+
+
+/* end of theme.css */

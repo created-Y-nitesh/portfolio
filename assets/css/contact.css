@@ -1,0 +1,197 @@
+/* =========================
+   RESET + BASE
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Inter", system-ui, sans-serif;
+    background: linear-gradient( 120deg, #0f0c29, #302b63, #24243e);
+    background-size: 400% 400%;
+    animation: bgMove 12s ease infinite;
+    color: #fff;
+}
+
+
+/* =========================
+   BACKGROUND ANIMATION
+========================= */
+
+@keyframes bgMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+/* =========================
+   MAIN CARD
+========================= */
+
+.box {
+    width: 92%;
+    max-width: 440px;
+    padding: 40px 35px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(18px);
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.6), inset 0 0 30px rgba(255, 255, 255, 0.05);
+    animation: cardFloat 6s ease-in-out infinite;
+}
+
+
+/* Floating motion */
+
+@keyframes cardFloat {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+
+/* =========================
+   HEADING
+========================= */
+
+h1 {
+    text-align: center;
+    font-size: 34px;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+    background: linear-gradient( 90deg, #00f2fe, #4facfe, #a18cd1);
+    background-size: 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textGlow 4s linear infinite;
+}
+
+@keyframes textGlow {
+    0% {
+        background-position: 0%;
+    }
+    100% {
+        background-position: 300%;
+    }
+}
+
+p {
+    text-align: center;
+    font-size: 14px;
+    color: #d1d1d1;
+    margin-bottom: 30px;
+}
+
+
+/* =========================
+   CONTACT LINKS
+========================= */
+
+a {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    color: #fff;
+    padding: 15px 18px;
+    margin-bottom: 16px;
+    border-radius: 12px;
+    background: linear-gradient( 120deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04));
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    transition: all 0.35s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* Shine effect */
+
+a::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 120%;
+    height: 100%;
+    background: linear-gradient( 90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+    transition: 0.6s;
+}
+
+a:hover::before {
+    left: 120%;
+}
+
+a i {
+    font-size: 20px;
+    min-width: 24px;
+}
+
+
+/* Hover animation */
+
+a:hover {
+    transform: translateY(-4px) scale(1.02);
+    background: linear-gradient( 120deg, #667eea, #764ba2);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
+}
+
+
+/* =========================
+   TELEGRAM – EXTRA HEAVY
+========================= */
+
+.telegram {
+    font-weight: 600;
+    background: linear-gradient( 120deg, #0088cc, #00c6ff);
+    border: none;
+}
+
+.telegram:hover {
+    background: linear-gradient( 120deg, #00c6ff, #0088cc);
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    text-align: center;
+    margin-top: 28px;
+    font-size: 12px;
+    color: #b5b5b5;
+    opacity: 0.8;
+}
+
+
+/* =========================
+   MOBILE OPTIMIZATION
+========================= */
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 28px;
+    }
+    .box {
+        padding: 30px 24px;
+    }
+}
