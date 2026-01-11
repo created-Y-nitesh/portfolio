@@ -18,11 +18,11 @@ This project focuses on performance, clean structure, and smooth UI animations w
 🔥 Pure HTML, CSS & JavaScript
 
 
-#▶ How to Run the Project
+# ▶ How to Run the Project
 
 Clone the repository
 
-git clone https://github.com/your-username/your-repo-name.git
+git clone https://github.com/created-Y-nitesh/portfolio.git
 
 
 Open the project folder
@@ -30,7 +30,7 @@ Open the project folder
 Open index.html in your browser
 (No server, no npm, no build step required)
 
-#🛠 Technologies Used
+# 🛠 Technologies Used
 
 HTML5
 
@@ -38,7 +38,7 @@ CSS3 (Animations + Layout)
 
 JavaScript (Preloader & Interactions)
 
-#🎯 Purpose of This Project
+# 🎯 Purpose of This Project
 
 This project was created to:
 
@@ -50,7 +50,7 @@ Build a professional-level personal website
 
 Avoid over-engineering with frameworks
 
-#📌 Future Improvements
+# 📌 Future Improvements
 
 Add contact form with backend integration
 
@@ -60,9 +60,9 @@ Add dark/light mode
 
 Performance optimizations
 
-#👤 Author
+# 👤 Author
 
-#Nitesh Chaurasiya
+#  Nitesh Chaurasiya
 Front-End Developer
 📍 India
 
