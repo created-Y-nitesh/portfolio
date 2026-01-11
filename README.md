@@ -1,4 +1,4 @@
-#🚀 Personal Portfolio Website
+# 🚀 Personal Portfolio Website
 
 A fully functional, animated personal portfolio website built using HTML, CSS, and JavaScript.
 This project focuses on performance, clean structure, and smooth UI animations without using any heavy frameworks.
