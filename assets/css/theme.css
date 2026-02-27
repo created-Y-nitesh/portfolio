@@ -186,6 +186,7 @@ body::before {
 
 .nav-menu.open {
     /* for mobile; when open via JS */
+    display: flex;
     position: fixed;
     right: 20px;
     top: 82px;
@@ -195,6 +196,8 @@ body::before {
     padding: 12px;
     border-radius: 14px;
     flex-direction: column;
+    align-items: stretch;
+    z-index: 1001;
     box-shadow: 0 20px 60px rgba(2, 6, 23, 0.6);
 }
 
@@ -620,9 +623,33 @@ body::before {
     .nav-menu {
         display: none
     }
+    .nav-menu.open {
+        display: flex;
+        min-width: 220px;
+    }
+    .nav-menu.open .nav-item {
+        width: 100%;
+    }
+    .nav-menu.open .nav-link button {
+        width: 100%;
+        text-align: left;
+        padding: 10px 14px;
+    }
     /* show via .nav-menu.open when hamburger toggles */
     .hamburger {
-        display: flex
+        display: flex;
+        width: 44px;
+        height: 38px;
+        padding: 7px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.10);
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        backdrop-filter: blur(8px);
+        box-shadow: 0 8px 20px rgba(2, 6, 23, 0.45);
+    }
+    .hamburger .bar {
+        background: linear-gradient(90deg, #c9f8ff, #8fb6ff);
+        box-shadow: 0 0 8px rgba(201, 248, 255, 0.55);
     }
     .nav-container {
         padding: 10px
@@ -651,6 +678,135 @@ body::before {
         right: 12px;
         left: auto;
         top: 74px
+    }
+}
+
+
+/* explicit responsive ranges */
+
+@media (min-width:1200px) {
+    .hero-container {
+        gap: 56px;
+    }
+    .features-grid,
+    .projects-grid {
+        gap: 24px;
+    }
+}
+
+@media (min-width:768px) and (max-width:1024px) {
+    .navbar {
+        top: 14px;
+    }
+    .hero {
+        min-height: auto;
+        padding: 96px 0 44px;
+    }
+    .hero-container {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    .hero-content {
+        text-align: center;
+    }
+    .hero-buttons {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .hero-img {
+        max-width: min(100%, 480px);
+    }
+    .project-img {
+        height: clamp(260px, 38vw, 360px);
+    }
+    .footer-brand .footer-logo {
+        height: 320px;
+        width: auto;
+        max-width: 100%;
+    }
+}
+
+@media (max-width:767.98px) {
+    .navbar {
+        top: 10px;
+        width: 94%;
+        padding: 8px 10px;
+    }
+    .nav-container {
+        padding: 6px;
+        gap: 8px;
+    }
+    .nav-logo .logo {
+        height: 34px;
+    }
+    .hamburger {
+        background: rgba(255, 255, 255, 0.14);
+        border-color: rgba(255, 255, 255, 0.34);
+    }
+    .hamburger .bar {
+        background: linear-gradient(90deg, #ffffff, #aff6ff);
+    }
+    .nav-menu.open {
+        left: 12px;
+        right: 12px;
+        top: 70px;
+        width: auto;
+    }
+    .hero {
+        min-height: auto;
+        padding: 86px 0 36px;
+    }
+    .hero-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 4px;
+    }
+    .hero-title {
+        font-size: clamp(1.7rem, 7.5vw, 2.4rem);
+        line-height: 1.08;
+    }
+    .hero-subtitle {
+        font-size: 0.98rem;
+        margin-bottom: 18px;
+    }
+    .hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+    .btn {
+        width: 100%;
+        justify-content: center;
+        padding: 11px 16px;
+    }
+    .hero-image::before {
+        width: min(90vw, 420px);
+        height: 220px;
+    }
+    .project-img {
+        height: clamp(180px, 52vw, 300px);
+    }
+    .project-info {
+        padding: 16px;
+    }
+    .cta {
+        padding: 84px 0;
+    }
+    .cta h2 {
+        font-size: clamp(1.6rem, 7vw, 2rem);
+    }
+    .footer {
+        padding: 52px 0 28px;
+    }
+    .footer-brand .footer-logo {
+        height: 240px;
+        width: auto;
+        max-width: 100%;
+    }
+    .social-links a,
+    .social-links img {
+        width: 42px;
+        height: 42px;
     }
 }
 

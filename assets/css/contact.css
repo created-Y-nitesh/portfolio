@@ -195,3 +195,72 @@ footer {
         padding: 30px 24px;
     }
 }
+
+
+/* =========================
+   EXPLICIT RESPONSIVE RANGES
+========================= */
+
+@media (min-width: 1200px) {
+    .box {
+        max-width: 480px;
+        padding: 44px 38px;
+    }
+    h1 {
+        font-size: 36px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    body {
+        align-items: flex-start;
+        padding: 40px 20px;
+    }
+    .box {
+        max-width: 500px;
+        padding: 34px 30px;
+    }
+    h1 {
+        font-size: 31px;
+        letter-spacing: 2px;
+    }
+    a {
+        padding: 14px 16px;
+        margin-bottom: 14px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    body {
+        align-items: flex-start;
+        padding: 20px 12px;
+        overflow-x: hidden;
+    }
+    .box {
+        width: 100%;
+        max-width: 440px;
+        padding: 24px 18px;
+        border-radius: 14px;
+    }
+    h1 {
+        font-size: clamp(24px, 8vw, 30px);
+        letter-spacing: 2px;
+    }
+    p {
+        font-size: 13px;
+        margin-bottom: 22px;
+    }
+    a {
+        gap: 10px;
+        padding: 13px 14px;
+        margin-bottom: 12px;
+        font-size: 0.95rem;
+    }
+    a i {
+        font-size: 18px;
+        min-width: 20px;
+    }
+    footer {
+        margin-top: 20px;
+    }
+}

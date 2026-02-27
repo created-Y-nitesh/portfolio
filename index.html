@@ -157,7 +157,7 @@
                     <a href="https://github.com/created-Y-nitesh" target="_blank" style="background-color: aliceblue"><img src="assets/images/icons/github.png " alt="GitHub " /></a>
                     <a href="https://www.linkedin.com/in/nitesh-chaurasiya-661097382/" target="_blank"><img src="assets/images/icons/Linkedin.png " alt="LinkedIn " /></a>
                     <a href="https://x.com/tech_by_niteshh"><img src="assets/images/icons/X.avif " alt="Twitter " /></a>
-                    <a href="https://www.instagram.com/tech_by_niteshh"><img src="assets/images/icons/Instagram.webp " alt="Instagram " /></a>
+                    <a href="# "><img src="assets/images/icons/Instagram.webp " alt="Instagram " /></a>
                 </div>
             </div>
         </div>
@@ -186,7 +186,7 @@
     </div>
 
     <div class="right">
-      <div class="name">&lt;/Nitesh Chaurasiya&gt;</div>
+      <div class="name">Nitesh Chaurasiya</div>
       <div class="tag">Frontend • Automation • AI Tools</div>
     </div>
   </div>
@@ -197,6 +197,8 @@
 
                 const style = document.createElement("style");
                 style.innerHTML = style.innerHTML = `
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
 #loader-screen {
   position: fixed;
   inset: 0;
@@ -204,29 +206,55 @@
   color: #00ffcc;
   font-family: monospace;
   display: flex;
+  gap: 24px;
   padding: 40px;
+  box-sizing: border-box;
+  overflow: hidden;
   z-index: 99999;
 }
 
 .left {
   flex: 2;
+  min-width: 0;
 }
 
 .right {
   flex: 1;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
+  text-align: right;
   padding-right: 20px;
 }
 
 .name {
-  font-size: 28px;
-  letter-spacing: 3px;
-  color: #ffffff;
-  text-shadow: 0 0 20px #00ffcc;
+  position: relative;
+  display: inline-block;
+  margin-left: auto;
+  font-family: "Great Vibes", "Segoe Script", "Brush Script MT", cursive;
+  font-size: clamp(40px, 4.2vw, 56px);
+  line-height: 1.06;
+  letter-spacing: 0.5px;
+  font-weight: 400;
+  color: #f2ffff;
+  text-shadow:
+    0 0 6px rgba(0, 255, 204, 0.55),
+    0 0 18px rgba(0, 255, 204, 0.35),
+    0 0 34px rgba(0, 255, 204, 0.2);
   animation: flicker 2.5s infinite alternate;
+}
+
+.name::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -7px;
+  width: 78%;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(0, 255, 204, 0), rgba(0, 255, 204, 0.78), rgba(0, 255, 204, 0));
+  opacity: 0.85;
 }
 
 .tag {
@@ -244,9 +272,12 @@
 
 #log {
   height: 60vh;
-  overflow: hidden;
+  overflow: auto;
   font-size: 14px;
   opacity: 0.85;
+  white-space: pre-wrap;
+  word-break: break-word;
+  padding-right: 4px;
 }
 
 .bar {
@@ -267,6 +298,87 @@
 @keyframes flicker {
   0% { opacity: 0.7; }
   100% { opacity: 1; }
+}
+
+@media (max-width: 1024px) {
+  #loader-screen {
+    padding: 28px 22px;
+    gap: 18px;
+  }
+
+  .left {
+    flex: 1.4;
+  }
+
+  .right {
+    padding-right: 0;
+    align-items: flex-end;
+    text-align: right;
+  }
+
+  .name {
+    font-size: clamp(34px, 5.4vw, 46px);
+    letter-spacing: 0.4px;
+  }
+
+  .glow {
+    font-size: 20px;
+    letter-spacing: 2px;
+    margin-bottom: 14px;
+  }
+
+  #log {
+    height: 50vh;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  #loader-screen {
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 12px;
+    padding: 18px 14px;
+  }
+
+  .left,
+  .right {
+    width: 100%;
+    flex: 0 0 auto;
+  }
+
+  .right {
+    align-items: flex-end;
+    text-align: right;
+  }
+
+  .name {
+    font-size: clamp(30px, 10vw, 42px);
+    letter-spacing: 0.2px;
+    margin-left: auto;
+  }
+
+  .tag {
+    margin-top: 6px;
+    font-size: 11px;
+  }
+
+  .glow {
+    font-size: clamp(16px, 5vw, 20px);
+    letter-spacing: 1.2px;
+    margin-bottom: 10px;
+  }
+
+  #log {
+    height: 42vh;
+    font-size: 12px;
+    line-height: 1.45;
+  }
+
+  .bar {
+    margin-top: 12px;
+    height: 5px;
+  }
 }
 `;
 
@@ -306,6 +418,5 @@
             })();
         </script>
 </body>
-
 
 </html>
